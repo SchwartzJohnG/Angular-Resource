@@ -1,0 +1,39 @@
+﻿<style>
+    .btn-link {
+        cursor: pointer;
+    }
+</style>
+
+<div class="row">
+    <form id="addForm" ng-submit="vm.add()" class="col-md-5">
+        <div class="col-md-4">
+            <input class="form-control" ng-model="vm.newMovie.title" placeholder="Title" />
+        </div>
+        <div class="col-md-4">
+            <input class="form-control" ng-model="vm.newMovie.director" placeholder="Director" />
+        </div>
+
+        <input type="submit" value="Add Movie" class="btn btn-default" />
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="row" ng-repeat="movie in vm.movies">
+            <div ng-show="!movie.edit" ng-click="movie.edit = true">
+                <div class="col-md-4">{{movie.title}}</div>
+                <div class="col-md-4">{{movie.director}}</div>
+            </div>
+            <div ng-show="movie.edit">
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="movie.title" />
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="movie.director" />
+                </div>
+            </div>
+            <div class="col-md-2 btn btn-default" ng-click="vm.update(movie)">Update</div>
+            <div class="col-md-2 btn btn-default" ng-click="vm.delete(movie)">Delete</div>
+        </div>
+    </div>
+</div>
